@@ -61,50 +61,8 @@ StudySpark AI is designed around a simple principle: **AI output should be treat
 - Loading, empty, success, and error states.
 - Clear feedback during AI generation.
 
----
-
-## 🧠 Architecture
-
-The application uses a small React frontend backed by an Express API.
 
 
-┌─────────────────────┐
-│      React UI       │
-│                     │
-│ Notes / Topic Input │
-└──────────┬──────────┘
-           │
-           │ POST /api/generate
-           ▼
-┌─────────────────────┐
-│   Express Backend   │
-│                     │
-│ Request validation  │
-│ API key protection  │
-└──────────┬──────────┘
-           │
-           │ Structured request
-           ▼
-┌─────────────────────┐
-│     Gemini LLM      │
-│                     │
-│ Returns JSON data   │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ JSON.parse()        │
-│        ↓            │
-│ Zod validation      │
-└──────────┬──────────┘
-           │
-           │ Validated data only
-           ▼
-┌─────────────────────┐
-│      React UI       │
-│                     │
-│ Flashcards + Quiz   │
-└─────────────────────┘
 
 🤖 AI Usage Note
 
