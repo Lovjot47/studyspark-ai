@@ -9,7 +9,9 @@ StudySpark AI is designed around a simple principle: **AI output should be treat
 🌐 **Live Demo:** https://studyspark-ai-mqw4.onrender.com/
 
 ---
-##🚀 Getting Started
+
+
+##🚀**Getting Started**
 Prerequisites
 Node.js 20.19+ recommended
 A Gemini API key
@@ -45,7 +47,7 @@ http://localhost:5173
 
 The Express API runs on the configured backend port.
 
-##🧪 Production Build
+##🧪 **Production Build**
 
 To verify that the frontend builds successfully:
 
@@ -57,8 +59,7 @@ dist/
 
 For production deployment, Express serves the generated React application and API routes from the same service.
 
-🔌 API
-Health Check
+🔌 **API Health Check**
 GET /api/health
 
 Example response:
@@ -85,7 +86,7 @@ quiz
 
 The endpoint returns validated structured JSON containing the study title, summary, flashcards, and quiz questions.
 
-##🔐 Environment Variables
+##🔐 **Environment Variables**
 
 Create a .env file locally:
 
