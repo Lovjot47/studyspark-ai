@@ -9,6 +9,90 @@ StudySpark AI is designed around a simple principle: **AI output should be treat
 🌐 **Live Demo:** https://studyspark-ai-mqw4.onrender.com/
 
 ---
+##🚀 Getting Started
+Prerequisites
+Node.js 20.19+ recommended
+A Gemini API key
+1. Clone the repository
+git clone https://github.com/Lovjot47/studyspark-ai.git
+cd studyspark-ai
+2. Install dependencies
+npm install
+3. Configure environment variables
+
+Copy the example environment file:
+
+cp .env.example .env
+
+On Windows PowerShell:
+
+Copy-Item .env.example .env
+
+Then add your Gemini API key:
+
+GEMINI_API_KEY=your_real_key
+GEMINI_MODEL=gemini-3.5-flash
+PORT=3001
+
+Never commit the .env file or expose the API key in frontend code.
+
+4. Start the application
+npm start
+
+The application will be available at:
+
+http://localhost:5173
+
+The Express API runs on the configured backend port.
+
+##🧪 Production Build
+
+To verify that the frontend builds successfully:
+
+npm run build
+
+The production build is generated in:
+
+dist/
+
+For production deployment, Express serves the generated React application and API routes from the same service.
+
+🔌 API
+Health Check
+GET /api/health
+
+Example response:
+
+{
+  "ok": true,
+  "aiConfigured": true
+}
+Generate Study Set
+POST /api/generate
+
+Request:
+
+{
+  "input": "Photosynthesis is the process by which plants convert light energy...",
+  "mode": "both"
+}
+
+Supported modes:
+
+both
+flashcards
+quiz
+
+The endpoint returns validated structured JSON containing the study title, summary, flashcards, and quiz questions.
+
+##🔐 Environment Variables
+
+Create a .env file locally:
+
+GEMINI_API_KEY=your_real_key
+GEMINI_MODEL=gemini-3.5-flash
+PORT=3001
+
 
 ## ✨ Features
 
@@ -64,7 +148,7 @@ StudySpark AI is designed around a simple principle: **AI output should be treat
 
 
 
-🤖 AI Usage Note
+##🤖 AI Usage Note
 
 AI development tools were used during the development process to help with:
 
@@ -78,7 +162,7 @@ Debugging and deployment troubleshooting
 Reviewing implementation decisions
 
 
-⏱️ Time Spent
+##⏱️ Time Spent
 
 Approximately 6 hours of development time.
 
