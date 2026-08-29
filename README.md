@@ -1,81 +1,142 @@
-# StudySpark AI - https://studyspark-ai-mqw4.onrender.com/
+# StudySpark AI
 
-A React study assistant that accepts free-form notes/topics, asks an LLM for structured JSON, validates the response server-side, and renders it as interactive flashcards and a quiz.
+> Turn notes into active recall.
 
-## Why this project
+A lightweight AI-powered study assistant that transforms free-form notes or topics into **structured flashcards and multiple-choice quizzes**.
 
-This implementation follows the assignment's core requirement: the LLM output is structured data that the application parses and turns into stateful UI, not a chatbot. The app also treats model output as untrusted input and validates it before rendering.
+StudySpark AI is designed around a simple principle: **AI output should be treated as untrusted data**. Instead of displaying raw LLM text, the backend requests structured JSON, parses it, validates it with Zod, and only then sends the validated data to the React application for rendering.
 
-## Stack
+🌐 **Live Demo:** https://studyspark-ai-mqw4.onrender.com/
 
-- React with hooks and functional components
-- Vite
-- Express backend
-- Google Gemini via `@google/genai`
-- Zod for runtime validation
-- Plain CSS for a responsive UI
+---
 
-## Prerequisites
+## ✨ Features
 
-Node.js 20.19+ is recommended for the current Vite release.
+### AI-Powered Study Generation
 
-## Setup
+- Paste free-form notes, a topic, or a chapter summary.
+- Generate:
+  - Flashcards
+  - Quiz questions
+  - Both
+- Uses Google Gemini through a server-side Express API.
+- AI responses are requested in a strict structured JSON format.
 
-1. Open this folder in VS Code.
-2. In the integrated terminal run:
+### Interactive Flashcards
 
-```bash
-npm install
-```
+- Flip cards to reveal answers.
+- Navigate between cards.
+- Shuffle the deck.
+- Keyboard-friendly controls.
+- Track study progress.
 
-3. Copy `.env.example` to `.env` and add your Gemini API key:
+### Interactive Quiz
 
-```env
-GEMINI_API_KEY=your_real_key
-GEMINI_MODEL=gemini-2.5-flash
-PORT=3001
-```
+- Multiple-choice questions with four options.
+- Question-by-question progress.
+- Score calculation.
+- Answer explanations after submission.
+- Retake the complete quiz.
+- Retry only the questions answered incorrectly.
 
-4. Start the app:
+### Study Sprint
 
-```bash
-npm start
-```
+- Built-in focus timer.
+- User-selectable durations:
+  - 5 minutes
+  - 10 minutes
+  - 15 minutes
+  - 20 minutes
+  - 25 minutes
+  - 30 minutes
+  - 45 minutes
+  - 60 minutes
+- Pause, resume, and reset controls.
 
-Then open the Vite URL shown in the terminal (normally `http://localhost:5173`).
+### UI & Accessibility
 
-## Usage
+- Responsive layout for desktop and mobile.
+- Dark/light theme toggle.
+- Keyboard interaction for flashcards.
+- Loading, empty, success, and error states.
+- Clear feedback during AI generation.
 
-Paste notes or a topic, choose Both / Flashcards / Quiz, and select **Generate study set**.
+---
 
-Flashcards are clickable and flip between question and answer.
+## 🧠 Architecture
 
-The quiz tracks answers, gives a score, explains answers after submission, and can re-test only the questions that were missed.
+The application uses a small React frontend backed by an Express API.
 
-## Failure handling
 
-The app explicitly handles:
+┌─────────────────────┐
+│      React UI       │
+│                     │
+│ Notes / Topic Input │
+└──────────┬──────────┘
+           │
+           │ POST /api/generate
+           ▼
+┌─────────────────────┐
+│   Express Backend   │
+│                     │
+│ Request validation  │
+│ API key protection  │
+└──────────┬──────────┘
+           │
+           │ Structured request
+           ▼
+┌─────────────────────┐
+│     Gemini LLM      │
+│                     │
+│ Returns JSON data   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ JSON.parse()        │
+│        ↓            │
+│ Zod validation      │
+└──────────┬──────────┘
+           │
+           │ Validated data only
+           ▼
+┌─────────────────────┐
+│      React UI       │
+│                     │
+│ Flashcards + Quiz   │
+└─────────────────────┘
 
-- Empty user input
-- Missing API configuration
-- AI/API failures
-- Empty model output
-- Malformed JSON
-- JSON that does not match the expected schema
-- Request cancellation
-- Older requests trying to overwrite newer results
-- Loading, error, and empty UI states
+🤖 AI Usage Note
 
-The frontend keeps a monotonically increasing request id and aborts the previous fetch before starting another request. The server validates the parsed model response with Zod before returning it to the browser.
+AI development tools were used during the development process to help with:
 
-## AI usage note
+Initial React component structure
+UI implementation ideas
+CSS/layout refinement
+Gemini structured-output integration
+Validation strategy
+Error-handling patterns
+Debugging and deployment troubleshooting
+Reviewing implementation decisions
 
-AI tools were used to help draft and review portions of the implementation, including React structure, validation strategy, CSS ideas, and error-handling patterns. The final code and decisions should be understood and explained by the submitter.
 
-## Known limitations
+⏱️ Time Spent
 
-- No authentication or persistent saved sessions.
-- The app currently uses Gemini; another provider would require changing the backend integration.
-- The study content quality still depends on the quality and completeness of the user input and model response.
-- The optional stretch features (streaming, save/reload sessions, refinement loop, mixed block types) are not implemented in the core version.
+Approximately 6 hours of development time.
 
+The time was primarily spent on:
+
+React UI and component architecture
+Gemini API integration
+Structured JSON generation
+Zod runtime validation
+AI failure handling
+Stale-request protection
+Interactive flashcards
+Interactive quiz and retry flow
+Study Sprint timer
+Responsive UI
+Dark/light theme
+Testing and debugging
+GitHub setup
+Production deployment
