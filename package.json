@@ -1,0 +1,28 @@
+{
+  "name": "ai-study-assistant",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "node server/index.js",
+    "client": "vite",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google/genai": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "latest",
+    "concurrently": "latest",
+    "vite": "latest"
+  }
+}
