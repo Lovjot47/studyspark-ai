@@ -79,14 +79,3 @@ AI tools were used to help draft and review portions of the implementation, incl
 - The study content quality still depends on the quality and completeness of the user input and model response.
 - The optional stretch features (streaming, save/reload sessions, refinement loop, mixed block types) are not implemented in the core version.
 
-## Time spent
-
-Target: ~8 hours. Replace this line with the actual time spent before submission.
-
-## Interview talking points
-
-1. Why the API key lives on the server.
-2. Why structured output alone is not enough and runtime validation is still needed.
-3. How stale response protection works.
-4. Why model output is treated as untrusted data.
-5. How the UI remains useful when generation fails.
