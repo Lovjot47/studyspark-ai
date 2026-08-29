@@ -1,4 +1,4 @@
-# StudySpark AI — Frontend Internship Assignment
+# StudySpark AI - https://studyspark-ai-mqw4.onrender.com/
 
 A React study assistant that accepts free-form notes/topics, asks an LLM for structured JSON, validates the response server-side, and renders it as interactive flashcards and a quiz.
 
