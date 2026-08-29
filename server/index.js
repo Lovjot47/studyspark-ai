@@ -343,7 +343,7 @@ if (process.env.NODE_ENV === 'production') {
     express.static(distPath)
   )
 
-  app.get('*', (_req, res) => {
+  app.use((_req, res) => {
     res.sendFile(
       path.join(
         distPath,
